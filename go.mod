@@ -1,4 +1,4 @@
-module code.aliyun.com/microstack/utils
+module github.com/micro-stacks/utils
 
 go 1.13.5
 
