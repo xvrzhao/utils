@@ -1,7 +1,8 @@
-# 公共函数
+# Utils
+Some common functions.
 
-## 安装
+## Installation
 
 ```
-$ go get code.aliyun.com/microstack/utils
+$ go get github.com/micro-stacks/utils
 ```
