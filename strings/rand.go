@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-// RandLetterNum 生成包含大小写字母和数字的随机字符串，并发安全
+// RandLetterNum 生成包含大小写字母和数字的随机字符串
 func RandLetterNum(len int) string {
 	const (
 		numLetters    = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
