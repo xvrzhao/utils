@@ -7,6 +7,7 @@ import (
 	"net/url"
 )
 
+// Open 建立数据库连接并返回连接对象 db。
 func Open(dbHost, dbPort, dbName, username, password string) (db *gorm.DB, err error) {
 	dsn := fmt.Sprintf("%s:%s@(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=%s",
 		username, password, dbHost, dbPort, dbName, url.QueryEscape("Asia/Shanghai"))
