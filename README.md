@@ -2,10 +2,10 @@
 
 [![Build Status](https://travis-ci.com/micro-stacks/utils.svg?branch=master)](https://travis-ci.com/micro-stacks/utils)
 
-Some common functions.
+Some common utility functions.
 
 ## Installation
 
 ```
-$ go get github.com/micro-stacks/utils
+$ go get -u github.com/micro-stacks/utils
 ```
