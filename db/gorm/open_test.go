@@ -10,14 +10,14 @@ func TestOpen(t *testing.T) {
 	port := os.Getenv("DB_PORT")
 	dbname := os.Getenv("DB_NAME")
 	username := os.Getenv("DB_USER")
-	password := os.Getenv("DB_DB_PASSWORD")
+	password := os.Getenv("DB_PASSWORD")
 
-	if host == "" || port == "" || dbname == "" || username == "" || password == "" {
+	if host == "" || port == "" || dbname == "" || username == "" {
 		t.Log("missing environment variables, bypassing this unit")
 		return
 	}
 
-	db, err := Open("localhost", "3306", "test", "root", "root")
+	db, err := Open(host, port, dbname, username, password)
 	if err != nil {
 		t.Logf("failed to open: %v", err)
 		return
