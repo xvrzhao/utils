@@ -1,4 +1,7 @@
 # Utils
+
+[![Build Status](https://travis-ci.com/micro-stacks/utils.svg?branch=master)](https://travis-ci.com/micro-stacks/utils)
+
 Some common functions.
 
 ## Installation
