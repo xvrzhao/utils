@@ -1,6 +1,6 @@
 module github.com/micro-stacks/utils
 
-go 1.13.5
+go 1.14
 
 require (
 	github.com/golang/protobuf v1.2.0
