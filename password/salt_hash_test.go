@@ -8,7 +8,7 @@ func TestVerifySaltHashPwd(t *testing.T) {
 
 	t.Log(p, s, sp)
 
-	if b := VerifySaltHashPwd(p, s, sp); b != true {
+	if b := VerifySaltHashPwd(p, s, sp); !b {
 		t.Fail()
 		return
 	}

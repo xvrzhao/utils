@@ -1,8 +1,7 @@
 package password
 
 import (
-	"crypto/md5"
-	"encoding/hex"
+	"github.com/micro-stacks/utils/crypto"
 	"github.com/micro-stacks/utils/strings"
 )
 
@@ -11,23 +10,13 @@ import (
 //   saltHashPassword = md5(md5(password) + salt)
 func SaltHashPwd(password string, saltLen int) (saltHashPassword, salt string) {
 	salt = strings.RandLetterNum(saltLen)
-	h := md5.New()
-	h.Write([]byte(password))
-	saltHashPassword = hex.EncodeToString(h.Sum(nil)) + salt
-	h.Reset()
-	h.Write([]byte(saltHashPassword))
-	saltHashPassword = hex.EncodeToString(h.Sum(nil))
+	saltHashPassword = crypto.Md5(crypto.Md5(password) + salt)
 	return
 }
 
 // VerifySaltHashPwd verifies whether saltHashPassword was generated from password and salt.
 func VerifySaltHashPwd(password, salt, saltHashPassword string) bool {
-	h := md5.New()
-	h.Write([]byte(password))
-	p := hex.EncodeToString(h.Sum(nil)) + salt
-	h.Reset()
-	h.Write([]byte(p))
-	if p = hex.EncodeToString(h.Sum(nil)); p != saltHashPassword {
+	if crypto.Md5(crypto.Md5(password)+salt) != saltHashPassword {
 		return false
 	}
 	return true
