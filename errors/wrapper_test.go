@@ -2,17 +2,10 @@ package errors
 
 import (
 	"errors"
-	"os"
 	"testing"
 )
 
 func TestWrapper(t *testing.T) {
-	f, err := os.Create("log.out")
-	if err != nil{
-		t.Error(err)
-		return
-	}
-	SetLoggerWriter(f)
 	SetWrapperOpt(WrapperOpt{
 		ProjectDir:    "/Users/xvrzhao/Documents/projects/micro-stacks/",
 		ProjectModule: "github.com/micro-stacks/utils/",
