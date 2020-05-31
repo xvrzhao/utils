@@ -2,6 +2,7 @@ package errors
 
 import (
 	"errors"
+	"os"
 	"testing"
 )
 
@@ -10,9 +11,14 @@ func TestWrapper(t *testing.T) {
 		ProjectDir:    "/Users/xvrzhao/Documents/projects/micro-stacks/",
 		ProjectModule: "github.com/micro-stacks/utils/",
 	})
-
+	f, err := os.Create("log.out")
+	if err != nil {
+		t.Errorf("failed to create file log.out: %s", err.Error())
+		return
+	}
+	SetLoggerWriter(f)
 	if err := handler(); err != nil {
-		Log(err)
+		Log(Wrapper(err, "invoke handler error"))
 	}
 }
 
