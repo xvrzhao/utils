@@ -37,7 +37,7 @@ func Wrapper(err error, format string, a ...interface{}) error {
 	}
 
 	if errors.Unwrap(err) == nil {
-		err = fmt.Errorf("[ERROR] %w", err)
+		err = fmt.Errorf("\t@ [origin]: %w", err)
 	}
 
 	pc, file, line, ok := runtime.Caller(1)
@@ -49,10 +49,10 @@ func Wrapper(err error, format string, a ...interface{}) error {
 		if strings.HasPrefix(file, wrapperOpt.ProjectDir) {
 			file = strings.TrimPrefix(file, wrapperOpt.ProjectDir)
 		}
-		return fmt.Errorf("[ERROR] %s: %s (%s:%d)\n%w", funcName, fmt.Sprintf(format, a...), file, line, err)
+		return fmt.Errorf("\t@ [%s]: %s (%s:%d)\n%w", funcName, fmt.Sprintf(format, a...), file, line, err)
 	}
 
-	return fmt.Errorf("[ERROR] %s\n%w", fmt.Sprintf(format, a...), err)
+	return fmt.Errorf("\t@ %s\n%w", fmt.Sprintf(format, a...), err)
 }
 
 // SetWrapperOpt 根据 opt 改变 Wrapper 函数的行为， 该函数需在调用 Wrapper 函数前执行。
