@@ -8,8 +8,8 @@ import (
 
 func TestWrapper(t *testing.T) {
 	SetWrapperOpt(WrapperOpt{
-		ProjectDir:    "/Users/xvrzhao/Documents/projects/micro-stacks/",
-		ProjectModule: "github.com/micro-stacks/utils/",
+		ProjectDir:    "/Users/xvrzhao/Documents/projects/xvrzhao/",
+		ProjectModule: "github.com/xvrzhao/utils/",
 	})
 	f, err := os.Create("log.out")
 	if err != nil {

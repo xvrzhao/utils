@@ -1,4 +1,4 @@
-module github.com/micro-stacks/utils
+module github.com/xvrzhao/utils
 
 go 1.14
 

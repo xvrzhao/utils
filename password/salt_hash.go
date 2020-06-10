@@ -1,8 +1,8 @@
 package password
 
 import (
-	"github.com/micro-stacks/utils/crypto"
-	"github.com/micro-stacks/utils/strings"
+	"github.com/xvrzhao/utils/crypto"
+	"github.com/xvrzhao/utils/strings"
 )
 
 // SaltHashPwd generates a salt and the salt-hashed password.
