@@ -2,15 +2,15 @@ package times
 
 import "time"
 
-// getLocalThisWeekDayRange 获取本周 (周一到周五) 时间范围的 [beginning, end)。
-func GetLocalThisWeekDayRange(now time.Time) (beginning, end time.Time) {
-	now = now.Local()
-	todayBg := time.Date(now.Year(), now.Month(), now.Day(),
-		0, 0, 0, 0, time.Local)
+// GetLocalWeekRange 获取 t 在本地的当周 (周一到周日) 时间范围 [beginning, end)，
+// beginning 和 end 均为本地时区。
+func GetLocalWeekRange(t time.Time) (beginning, end time.Time) {
+	t = t.Local()
+	tDayBg := GetLocalDayBeginning(t)
 
-	wd := now.Weekday()
+	wd := t.Weekday()
 	if wd == time.Monday {
-		beginning = todayBg
+		beginning = tDayBg
 		end = beginning.AddDate(0, 0, 7)
 		return
 	}
@@ -18,7 +18,7 @@ func GetLocalThisWeekDayRange(now time.Time) (beginning, end time.Time) {
 	if wd == 0 {
 		wd = 7
 	}
-	beginning = todayBg.AddDate(0, 0, 1-int(wd))
+	beginning = tDayBg.AddDate(0, 0, 1-int(wd))
 	end = beginning.AddDate(0, 0, 7)
 	return
 }
